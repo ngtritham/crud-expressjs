@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "dotenv/config";
 import express, { Application } from "express";
 import swaggerUi from "swagger-ui-express";
 import productsRouter from "./v1/routes/products";

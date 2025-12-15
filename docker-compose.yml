@@ -21,6 +21,15 @@ services:
     networks:
       - crud-network
     restart: unless-stopped
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
 
   postgres:
     image: postgres:18
