@@ -89,15 +89,20 @@ All API endpoints are prefixed with `/v1` for version control.
 
 **User**:
 
+- id: UUID version 7 (auto-generated)
 - username: string
 - password: string (hashed)
+- salt: string (auto-generated md5 string)
 
 **Product**:
 
-- id: UUID (auto-generated)
+- id: UUID version 7 (auto-generated)
 - name: string
 - price: string
+- created_by: UUID version 7 (link to user_id)
 - created_at: ISO Date (auto-generated)
+- updated_by: UUID version 7 (link to user_id)
+- updated_at: ISO Date (auto-generated)
 
 ## Database
 
