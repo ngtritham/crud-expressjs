@@ -13,6 +13,25 @@ Basic CRUD API service
 
 ## Project structure
 
+```
+crud-expressjs/
+├── src/
+│   ├── v1/
+│   │   ├── controllers/ # Version 1 HTTP request handlers
+│   │   └── routes/      # Version 1 API route definitions
+│   ├── models/          # Database models/entities
+│   ├── services/        # Business logic layer
+│   ├── middlewares/     # Authentication, validation, error handling
+│   ├── config/          # Configuration files (database, JWT, Swagger, etc.)
+│   ├── migrations/      # Database migration files
+│   ├── seeds/           # Database seed data
+│   └── index.ts         # Application entry point
+├── docker-compose.yml   # Docker services configuration
+├── Dockerfile           # Application container definition
+├── tsconfig.json        # TypeScript configuration
+└── package.json         # Dependencies and scripts
+```
+
 ## How to start
 
 1. Run all services & dependencies

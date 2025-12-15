@@ -19,12 +19,13 @@ This is a CRUD API service built with TypeScript and ExpressJS, using PostgreSQL
 ```
 crud-expressjs/
 ├── src/
-│   ├── controllers/     # HTTP request handlers
-│   ├── routes/          # API route definitions
+│   ├── v1/
+│   │   ├── controllers/ # Version 1 HTTP request handlers
+│   │   └── routes/      # Version 1 API route definitions (e.g., /v1/products)
 │   ├── models/          # Database models/entities
 │   ├── services/        # Business logic layer
 │   ├── middlewares/     # Authentication, validation, error handling
-│   ├── config/          # Configuration files (database, JWT, etc.)
+│   ├── config/          # Configuration files (database, JWT, Swagger, etc.)
 │   ├── migrations/      # Database migration files
 │   ├── seeds/           # Database seed data
 │   └── index.ts         # Application entry point
@@ -33,6 +34,8 @@ crud-expressjs/
 ├── tsconfig.json        # TypeScript configuration
 └── package.json         # Dependencies and scripts
 ```
+
+**Versioning**: Routes and controllers are organized under version folders (e.g., `src/v1/`) to support API versioning. All endpoints are prefixed with the version number (e.g., `/v1/products`).
 
 ## Development Commands
 

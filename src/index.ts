@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import swaggerUi from "swagger-ui-express";
-import productsRouter from "./routes/products";
+import productsRouter from "./v1/routes/products";
 import { swaggerSpec } from "./config/swagger";
 
 const app: Application = express();
