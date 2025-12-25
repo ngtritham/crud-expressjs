@@ -5,6 +5,7 @@ import swaggerUi from "swagger-ui-express";
 import productsRouter from "./v1/routes/products";
 import { swaggerSpec } from "./config/swagger";
 import { AppDataSource } from "./config/database";
+import { errorHandler, notFoundHandler } from "./middlewares/errors";
 
 const app: Application = express();
 const PORT = process.env.PORT || 8080;
@@ -18,6 +19,12 @@ app.use("/v1/products", productsRouter);
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
+
+// 404 handler - must be after all routes
+app.use(notFoundHandler);
+
+// Global error handler - must be last
+app.use(errorHandler);
 
 AppDataSource.initialize()
   .then(() => {
