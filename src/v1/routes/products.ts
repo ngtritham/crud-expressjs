@@ -55,7 +55,6 @@ router.get("/:id", (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
   console.log('💡 id === "999": ', id === "999");
 
-  // Simulate product lookup - if id is "999", throw NotFoundError
   if (id === "999") {
     throw new NotFoundError("Product");
   }

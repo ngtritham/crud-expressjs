@@ -1,6 +1,15 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import path from "path";
 
+// Determine file extension based on environment
+// In development, we run TypeScript directly with ts-node-dev
+// In production, we run compiled JavaScript files
+const isDevelopment = process.env.NODE_ENV === "development";
+const fileExtension = isDevelopment ? "ts" : "js";
+const routesPath = isDevelopment
+  ? path.join(__dirname, "../v1/routes/*.ts")
+  : path.join(__dirname, "../v1/routes/*.js");
+
 const options: swaggerJsdoc.Options = {
   definition: {
     openapi: "3.0.0",
@@ -16,7 +25,7 @@ const options: swaggerJsdoc.Options = {
       },
     ],
   },
-  apis: [path.join(__dirname, "../v1/routes/*.js")],
+  apis: [routesPath],
 };
 
 export const swaggerSpec = swaggerJsdoc(options);

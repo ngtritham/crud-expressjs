@@ -1,12 +1,27 @@
-# Build stage
-FROM node:25-slim AS build
+# Base stage with dependencies
+FROM node:25-slim AS base
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
 
-# Install all dependencies (including devDependencies for build)
+# Development stage
+FROM base AS development
+
+# Install all dependencies (including devDependencies)
+RUN npm install
+
+# Copy source code
+COPY . .
+
+EXPOSE 8080
+
+CMD ["npm", "run", "dev"]
+
+# Build stage
+FROM base AS build
+
+# Install all dependencies for build
 RUN npm install
 
 # Copy source code
@@ -15,8 +30,8 @@ COPY . .
 # Build the project
 RUN npm run build
 
-# Runtime stage
-FROM node:25-slim
+# Production stage
+FROM node:25-slim AS production
 
 WORKDIR /app
 
